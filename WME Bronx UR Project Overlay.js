@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Bronx UR Project Overlay
 // @namespace    WazeDev
-// @version      2018.04.12.001
+// @version      2018.04.12.002
 // @description  Adds a group area overlay for the Bronx UR Project (2018).
 // @author       MapOMatic
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
@@ -143,7 +143,15 @@
             strokeOpacity: 1,
             strokeWidth: 3,
             fillOpacity: '${fillOpacity}',
-            fillColor: '${fillColor}'
+            fillColor: '${fillColor}',
+            label: 'Group ${name}',
+            fontOpacity: 0.9,
+            fontSize: "20px",
+            fontFamily: "Arial",
+            fontWeight: "bold",
+            fontColor: "#fff",
+            labelOutlineColor: "#000",
+            labelOutlineWidth: 2
         });
         _layer = new OL.Layer.Vector(_stateAbbr + " UR Project", {
             rendererOptions: { zIndexing: true },
