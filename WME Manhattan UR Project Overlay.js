@@ -1,7 +1,7 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name         WME Manhattan UR Project Overlay
 // @namespace    WazeDev
-// @version      2018.05.06.001
+// @version      2018.05.11.001
 // @description  Adds a group area overlay for the Manhattan UR Project (2018).
 // @author       MapOMatic, Dude495
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
@@ -11,14 +11,26 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
-
+    var Version = GM_info.script.version;
+    var ScriptName = GM_info.script.name;
+    var UpdateAlert = "yes";
+    var UpdateNotes = ScriptName + " has been updated to v" + Version;
+    UpdateNotes = UpdateNotes + "\n\n" +
+        "* Adjusted Group 1 overlay color to differentiate from Group 2";
+    if (UpdateAlert === "yes") {
+        ScriptName = ScriptName.replace( /\s/g, "") + "Version";
+        if (localStorage.getItem(ScriptName) !== Version) {
+            alert(UpdateNotes);
+            localStorage.setItem(ScriptName, Version);
+        }
+    }
+     'use strict';
     // Enter the state abbreviation:
     var _stateAbbr = "Manhattan";
 
     // Enter the MapRaid area names and the desired fill colors, in order they appear in the original map legend:
     var _areas = {
-        '1':{fillColor:'#FF0000'},
+        '1':{fillColor:'#ff99e6'},
         '2':{fillColor:'#FF0000'},
         '3':{fillColor:'#01579b'},
         '4':{fillColor:'#7cb342'},
