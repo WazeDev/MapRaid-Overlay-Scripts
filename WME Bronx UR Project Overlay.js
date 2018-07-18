@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Bronx UR Project Overlay
 // @namespace    WazeDev
-// @version      2018.04.12.002
+// @version      2018.07.18.001
 // @description  Adds a group area overlay for the Bronx UR Project (2018).
 // @author       MapOMatic
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
@@ -11,6 +11,19 @@
 // ==/UserScript==
 
 (function() {
+    var Version = GM_info.script.version;
+    var ScriptName = GM_info.script.name;
+    var UpdateAlert = "yes";
+    var UpdateNotes = ScriptName + " has been updated to v" + Version;
+    UpdateNotes = UpdateNotes + "\n" +
+        "* Added a group jump box dropdown menu.";
+    if (UpdateAlert === "yes") {
+        ScriptName = ScriptName.replace( /\s/g, "") + "Version";
+        if (localStorage.getItem(ScriptName) !== Version) {
+            alert(UpdateNotes);
+            localStorage.setItem(ScriptName, Version);
+        }
+    }
     'use strict';
 
     // Enter the state abbreviation:
@@ -178,18 +191,198 @@
         _layer.setVisibility(visible);
         saveSettingsToStorage();
     }
+    function Group1() {
+        W.map.setCenter(new OL.LonLat(-8220430.1375199, 4998294.8576888))
+        W.map.zoomTo(4)
+    }
+    function Group2() {
+        W.map.setCenter(new OL.LonLat(-8226796.5059452, 4998015.9819683))
+        W.map.zoomTo(5)
+    }
+    function Group3() {
+        W.map.setCenter(new OL.LonLat(-8223180.0790449, 4996664.0020307))
+        W.map.zoomTo(5)
+    }
+    function Group4() {
+        W.map.setCenter(new OL.LonLat(-8219205.5610078, 4995170.9638542))
+        W.map.zoomTo(3)
+    }
+    function Group5() {
+        W.map.setCenter(new OL.LonLat(-8215842.3317637, 4993986.189916))
+        W.map.zoomTo(4)
+    }
+    function Group6() {
+        W.map.setCenter(new OL.LonLat(-8227656.1635063, 4995206.4160958))
+        W.map.zoomTo(4)
+    }
+    function Group7() {
+        W.map.setCenter(new OL.LonLat(-8224398.0351761, 4994059.8606717))
+        W.map.zoomTo(4)
+    }
+    function Group8() {
+        W.map.setCenter(new OL.LonLat(-8220604.847648, 4992650.5529629))
+        W.map.zoomTo(4)
+    }
+    function Group9() {
+        W.map.setCenter(new OL.LonLat(-8214986.7260698, 4990457.7657143))
+        W.map.zoomTo(2)
+    }
+    function Group10() {
+        W.map.setCenter(new OL.LonLat(-8226801.0242525, 4991723.7539952))
+        W.map.zoomTo(3)
+    }
+    function Group11() {
+        W.map.setCenter(new OL.LonLat(-8223910.7491209, 4990562.8666283))
+        W.map.zoomTo(3)
+    }
+    function Group12() {
+        W.map.setCenter(new OL.LonLat(-8220117.5615927, 4989239.5505763))
+        W.map.zoomTo(3)
+    }
+    function Group13() {
+        W.map.setCenter(new OL.LonLat(-8217291.7802037, 4987565.1019256))
+        W.map.zoomTo(4)
+    }
+    function Group14() {
+        W.map.setCenter(new OL.LonLat(-8228356.0400464, 4988334.2495227))
+        W.map.zoomTo(3)
+    }
+    function Group15() {
+        W.map.setCenter(new OL.LonLat(-8225064.4705163, 4987082.5931847))
+        W.map.zoomTo(3)
+    }
+    function Group16() {
+        W.map.setCenter(new OL.LonLat(-8221328.6107594, 4985577.7391906))
+        W.map.zoomTo(3)
+    }
+    function Group17() {
+        W.map.setCenter(new OL.LonLat(-8217463.7635172, 4984641.3855942))
+        W.map.zoomTo(3)
+    }
+    function Group18() {
+        W.map.setCenter(new OL.LonLat(-8228867.2126729, 4984488.5115376))
+        W.map.zoomTo(3)
+    }
+    function Group19() {
+        W.map.setCenter(new OL.LonLat(-8225456.2102862, 4982969.3256007))
+        W.map.zoomTo(3)
+    }
 
+    function GroupNo() {
+        var JumperRegion = document.getElementById('mapraidDropdown').value
+        if (JumperRegion === '0') { setTimeout(GroupNo, 1000)
+                                  } if (JumperRegion == '1B') {
+                                      Group1();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '2B') {
+                                      Group2();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '3B') {
+                                      Group3();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '4B') {
+                                      Group4();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '5B') {
+                                      Group5();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '6B') {
+                                      Group6();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '7B') {
+                                      Group7();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '8B') {
+                                      Group8();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '9B') {
+                                      Group9();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '10B') {
+                                      Group10();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '11B') {
+                                      Group11();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '12B') {
+                                      Group12();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '13B') {
+                                      Group13();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '14B') {
+                                      Group14();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '15B') {
+                                      Group15();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '16B') {
+                                      Group16();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '17B') {
+                                      Group17();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '18B') {
+                                      Group18();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  } if (JumperRegion == '19B') {
+                                      Group19();
+                                      document.getElementById('mapraidDropdown').value = '0'
+                                  }
+        setTimeout(GroupNo, 1000);
+    }
+    function initMapRaidOverlay() {
+        if (typeof Waze === 'undefined' || typeof W.map === 'undefined' || typeof W.loginManager === 'undefined' || !document.querySelector('#topbar-container > div > div > div.location-info-region > div') || !document.getElementById('layer-switcher-group_display')) {
+            setTimeout(initMapRaidOverlay, 800);
+            return;
+        }
+        if (!W.loginManager.user) {
+            W.loginManager.events.register("login", null, initMapRaidOverlay);
+            W.loginManager.events.register("loginStatus", null, initMapRaidOverlay);
+            if (!W.loginManager.user) {
+                return;
+            }
+        }
+        var _areaJumper = document.getElementById('mapraidDropdown');
+        var _grouplist = '<optgroup label="Bronx"><option value="1B">Group 1</option><option value="2B">Group 2</option><option value="3B">Group 3</option><option value="4B">Group 4</option><option value="5B">Group 5</option><option value="6B">Group 6</option><option value="7B">Group 7</option><option value="8B">Group 8</option><option value="9B">Group 9</option><option value="10B">Group 10</option><option value="11B">Group 11</option><option value="12B">Group 12</option><option value="13B">Group 13</option><option value="14B">Group 14</option><option value="15B">Group 15</option><option value="16B">Group 16</option><option value="17B">Group 17</option><option value="18B">Group 18</option><option value="19B">Group 19</option></optgroup>'
+        if (_areaJumper != null) {
+            _areaJumper.innerHTML += _grouplist
+        }
+        if (!_areaJumper) {
+            _areaJumper = document.createElement('select');
+            _areaJumper.id = 'mapraidDropdown';
+            _areaJumper.style.marginTop = '4px';
+            _areaJumper.style.display = 'block';
+            _areaJumper.innerHTML = '<option value="0">NY UR Project</option>'+_grouplist
+        }
+
+        if (!document.getElementById('mapraidDropdown')) {
+            // Deal with new layout
+            if (window.getComputedStyle(document.getElementById('edit-buttons').parentNode).display == 'flex') {
+                var _areaJumperContainer = document.createElement('div');
+                _areaJumperContainer.style.flexGrow = '1';
+                _areaJumperContainer.style.paddingTop = '6px';
+                _areaJumper.style.width = '80%';
+                _areaJumper.style.margin = '0 auto';
+                _areaJumperContainer.appendChild(_areaJumper);
+                document.getElementById('edit-buttons').parentNode.insertBefore(_areaJumperContainer, document.getElementById('edit-buttons'));
+            } else {
+                document.getElementById('edit-buttons').parentNode.insertBefore(_areaJumper, document.getElementById('edit-buttons'));
+            }
+            GroupNo();
+        }
+    }
     function bootstrap() {
         if (W && W.loginManager && W.loginManager.isLoggedIn()) {
             init();
+            initMapRaidOverlay();
             console.log(_stateAbbr + ' Area Overlay:', 'Initialized');
         } else {
             console.log(_stateAbbr + ' MR Overlay: ', 'Bootstrap failed.  Trying again...');
             window.setTimeout(() => bootstrap(), 500);
         }
     }
-
-    bootstrap();
+    setTimeout(bootstrap, 5000);
 
     var wktStrings = [
         'POLYGON((-73.85507583618163 40.91558813293605,-73.83242726325989 40.90838015784857,-73.83790969848631 40.89436735747279,-73.86104106903075 40.90062807267998,-73.85507583618163 40.91558813293605))',
