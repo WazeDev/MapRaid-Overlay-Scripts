@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Bronx UR Project Overlay
 // @namespace    WazeDev
-// @version      2018.07.18.001
+// @version      2018.07.18.002
 // @description  Adds a group area overlay for the Bronx UR Project (2018).
 // @author       MapOMatic, Dude495
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
