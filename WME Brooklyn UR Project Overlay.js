@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Brooklyn UR Project Overlay
 // @namespace    WazeDev
-// @version      2018.08.02.001
+// @version      2018.08.18.001
 // @description  Adds a group area overlay for the Brooklyn UR Project (2018).
 // @author       MapOMatic, Dude495
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
@@ -223,7 +223,7 @@
     }
 
     function bootstrap() {
-        if (W && W.loginManager && W.loginManager.isLoggedIn() && $('#topbar-container > div > div > div.location-info-region > div').length && $('#layer-switcher-group_display').length && WazeWrap.Interface) {
+        if (W && W.loginManager && W.loginManager.user && $('#topbar-container > div > div > div.location-info-region > div').length && $('#layer-switcher-group_display').length && WazeWrap.Interface) {
             init();
             console.log(STATE_ABBR + ' Area Overlay:', 'Initialized');
         } else {
