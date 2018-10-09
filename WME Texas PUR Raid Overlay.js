@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Texas PUR Raid Overlay
 // @namespace    WazeDev
-// @version      2018.10.09.001
+// @version      2018.10.09.002
 // @description  Adds a group area overlay for the Texas PUR Raid (2018).
 // @author       MapOMatic, Dude495
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
@@ -154,7 +154,7 @@
             labelOutlineColor: '#000',
             labelOutlineWidth: 2
         });
-        _layer = new OL.Layer.Vector(STATE_ABBR + ' UR Project', {
+        _layer = new OL.Layer.Vector(STATE_ABBR + ' PUR Raid', {
             rendererOptions: { zIndexing: true },
             uniqueName: layerid,
             shortcutKey: 'S+' + 0,
@@ -172,7 +172,7 @@
         updateDistrictNameDisplay();
 
         // Add the layer checkbox to the Layers menu.
-        WazeWrap.Interface.AddLayerCheckbox('display', STATE_ABBR + ' UR Project', _settings.layerVisible, layerToggled);
+        WazeWrap.Interface.AddLayerCheckbox('display', STATE_ABBR + ' PUR Raid', _settings.layerVisible, layerToggled);
 
         initAreaJumper();
     }
