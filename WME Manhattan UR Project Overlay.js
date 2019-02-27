@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Manhattan UR Project Overlay
 // @namespace    WazeDev
-// @version      2018.08.18.001
+// @version      2019.02.26.01
 // @description  Adds a group area overlay for the Manhattan UR Project (2018).
 // @author       MapOMatic, Dude495
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
@@ -18,10 +18,7 @@
     const VERSION = GM_info.script.version;
     const SCRIPT_NAME = GM_info.script.name;
     const UPDATE_ALERT = false;
-    const UPDATE_NOTES = [
-        SCRIPT_NAME + ' has been updated to v' + VERSION,
-        '* Added a group jump box dropdown menu.'
-    ].join('\n');
+    const UPDATE_NOTES = 'Fixed code that Waze broke to jump between areas in the drop down.';
 
     // Enter the MapRaid area names and the desired fill colors, in order they appear in the original map legend:
     const GROUPS = [
@@ -55,14 +52,6 @@
 
     var _settings;
     var _layer;
-
-    if (UPDATE_ALERT) {
-        SCRIPT_NAME = SCRIPT_NAME.replace( /\s/g, '') + 'VERSION';
-        if (localStorage.getItem(SCRIPT_NAME) !== VERSION) {
-            alert(UPDATE_NOTES);
-            localStorage.setItem(SCRIPT_NAME, VERSION);
-        }
-    }
 
     function loadSettingsFromStorage() {
         _settings = $.parseJSON(localStorage.getItem(SETTINGS_STORE_NAME));
@@ -219,7 +208,8 @@
             let value = $(this).val();
             let group = GROUPS.find(group => STATE_ABBR + group.name === value);
             if (group) {
-                W.map.moveTo(group.feature.geometry.getCentroid().toLonLat(), group.zoomTo);
+                var pt = group.feature.geometry.getCentroid();
+                W.map.moveTo(new OL.LonLat(pt.x, pt.y), group.zoomTo);
                 $areaJumper.val('0');
             }
         });
@@ -229,6 +219,7 @@
         if (W && W.loginManager && W.loginManager.user && $('#topbar-container > div > div > div.location-info-region > div').length && $('#layer-switcher-group_display').length && WazeWrap.Interface) {
             init();
             console.log(STATE_ABBR + ' Area Overlay:', 'Initialized');
+            WazeWrap.Interface.ShowScriptUpdate(SCRIPT_NAME, VERSION, UPDATE_NOTES, "https://greasyfork.org/en/scripts/369292-wme-manhattan-ur-project-overlay", "");
         } else {
             console.log(STATE_ABBR + ' MR Overlay: ', 'Bootstrap failed.  Trying again...');
             window.setTimeout(() => bootstrap(), 500);
